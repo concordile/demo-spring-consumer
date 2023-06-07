@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'io.github.projectleopold.demo'
-version = '0.1.0-SNAPSHOT'
+version = '0.1.0-RC0'
 sourceCompatibility = '17'
 
 configurations {
@@ -16,6 +16,14 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven {
+        name = 'GitHubPackages'
+        url = 'https://maven.pkg.github.com/projectleopold/demo-spring-producer'
+        credentials {
+            username = project.findProperty('github.username') ?: System.getenv('GITHUB_ACTOR')
+            password = project.findProperty('github.token') ?: System.getenv('GITHUB_TOKEN')
+        }
+    }
 }
 
 dependencies {
@@ -24,7 +32,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
+    testImplementation "io.github.projectleopold.demo:spring-producer:${producerVersion}:stubs"
 }
 
 dependencyManagement {
