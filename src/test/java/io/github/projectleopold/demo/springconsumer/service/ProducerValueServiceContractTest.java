@@ -10,7 +10,9 @@ import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRun
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.MOCK,
         properties = "producer-service.url=http://localhost:18081")
-@AutoConfigureStubRunner(ids = "io.github.projectleopold.demo:spring-producer:+:stubs:18081")
+@AutoConfigureStubRunner(
+        ids = "io.github.projectleopold.demo:spring-producer:+:stubs:18081",
+        stubsPerConsumer = true)
 class ProducerValueServiceContractTest {
 
     @Test
