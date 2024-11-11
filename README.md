@@ -1,4 +1,4 @@
 # Consumer's Spring Boot Application
 
 Demo application for
-[Producer's Spring Boot Application](https://github.com/projectleopold/demo-spring-producer).
+[Producer](https://github.com/concordile/demo-spring-producer)'s Spring Boot Application.
