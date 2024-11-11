@@ -4,9 +4,14 @@ plugins {
     id 'io.spring.dependency-management' version "${springDepManPluginVersion}"
 }
 
-group = 'io.github.projectleopold.demo'
-version = '0.1.0-RC1'
-sourceCompatibility = '17'
+group = 'io.github.concordile.demo'
+version = '0.1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 configurations {
     compileOnly {
@@ -18,7 +23,7 @@ repositories {
     mavenCentral()
     maven {
         name = 'GitHubPackages'
-        url = 'https://maven.pkg.github.com/projectleopold/demo-spring-producer'
+        url = 'https://maven.pkg.github.com/concordile/demo-spring-producer'
         credentials {
             username = project.findProperty('github.username') ?: System.getenv('GITHUB_ACTOR')
             password = project.findProperty('github.token') ?: System.getenv('GITHUB_TOKEN')
@@ -32,9 +37,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
-    testImplementation "io.github.projectleopold.demo:spring-producer:${producerVersion}:stubs"
+    testImplementation "io.github.concordile.demo:spring-producer:${producerVersion}:stubs"
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 dependencyManagement {
@@ -43,6 +48,6 @@ dependencyManagement {
     }
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
 }
