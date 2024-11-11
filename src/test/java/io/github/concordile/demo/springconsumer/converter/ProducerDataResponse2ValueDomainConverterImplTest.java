@@ -31,7 +31,7 @@ class ProducerDataResponse2ValueDomainConverterImplTest {
     void should_convert(@Autowired ProducerDataResponse2ValueDomainConverter converter) {
         ValueDomain domain = converter.convert(ProducerDataResponse.builder()
                 .id("id")
-                .value("value")
+                .data("value")
                 .build());
         assertEquals(ValueDomain.builder()
                 .value("value")

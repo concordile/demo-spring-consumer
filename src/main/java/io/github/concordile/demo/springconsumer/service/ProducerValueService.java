@@ -39,7 +39,7 @@ public class ProducerValueService implements ValueService {
         String id = idGenerator.generateId();
         ProducerDataRequest request = ProducerDataRequest.builder()
                 .id("id-" + id)
-                .value("value-" + id)
+                .data("value-" + id)
                 .build();
         ProducerDataResponse response = producerClient.create(request);
         return valueDomainConverter.convert(response);

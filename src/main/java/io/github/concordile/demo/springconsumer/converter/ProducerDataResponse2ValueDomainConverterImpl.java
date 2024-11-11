@@ -26,7 +26,7 @@ public class ProducerDataResponse2ValueDomainConverterImpl implements ProducerDa
     @Override
     public ValueDomain convert(ProducerDataResponse data) {
         return ValueDomain.builder()
-                .value(data.getValue())
+                .value(data.getData())
                 .build();
     }
 

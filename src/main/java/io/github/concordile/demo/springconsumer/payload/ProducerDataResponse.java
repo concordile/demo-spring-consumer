@@ -24,6 +24,6 @@ import lombok.Data;
 public class ProducerDataResponse {
 
     private String id;
-    private String value;
+    private String data;
 
 }

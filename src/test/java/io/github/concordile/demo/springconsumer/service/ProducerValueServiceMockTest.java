@@ -44,11 +44,11 @@ class ProducerValueServiceMockTest {
         when(idGenerator.generateId()).thenReturn("foobar");
         when(producerClient.create(eq(ProducerDataRequest.builder()
                 .id("id-foobar")
-                .value("value-foobar")
+                .data("value-foobar")
                 .build())))
                 .thenReturn(ProducerDataResponse.builder()
                         .id("id-foobar")
-                        .value("value-foobar")
+                        .data("value-foobar")
                         .build());
         ValueDomain newValue = valueService.createNewValue();
         assertEquals(ValueDomain.builder()
